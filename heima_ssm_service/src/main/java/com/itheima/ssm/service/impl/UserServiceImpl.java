@@ -23,7 +23,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserInfo userInfo = userDao.findByUsername(username);
+        UserInfo userInfo = null;
+        try {
+            userInfo = userDao.findByUsername(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<Role> roles = userInfo.getRoles();
         List<SimpleGrantedAuthority> authoritys = getAuthority(roles);
         User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(),

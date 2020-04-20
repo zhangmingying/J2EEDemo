@@ -23,5 +23,5 @@ public interface IUserDao {
             @Result(column = "status", property = "status"),
             @Result(column = "id", property = "roles", javaType = List.class, many =
             @Many(select = "com.itheima.ssm.dao.IRoleDao.findRoleByUserId"))})
-    public UserInfo findByUsername(String username);
+    public UserInfo findByUsername(String username) throws Exception;
 }

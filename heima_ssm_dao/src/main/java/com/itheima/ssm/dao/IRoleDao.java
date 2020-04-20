@@ -7,5 +7,5 @@ import java.util.List;
 public interface IRoleDao {
 
 
-    List<Role> findRoleByUserId(String userId);
+    List<Role> findRoleByUserId(String userId) throws Exception;
 }
